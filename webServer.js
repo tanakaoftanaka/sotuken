@@ -2,6 +2,7 @@ const fs = require("fs"),
     ejs = require("ejs"),
     express = require("express"),
     app = express();
+    port = process.env.PORT || 4000;
 
 var http = require('http');
 
@@ -98,7 +99,7 @@ function fileCheck(s, d) {
     }
 }
 
-server.listen(process.env.PORT, function() {
+server.listen(port, function() {
     console.log("server listen...");
     serverInit()
 });
