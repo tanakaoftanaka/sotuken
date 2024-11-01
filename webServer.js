@@ -1,4 +1,4 @@
-const fs = require("fs"),
+﻿const fs = require("fs"),
     ejs = require("ejs"),
     express = require("express"),
     app = express(),
@@ -30,7 +30,8 @@ app.get("/main.js", function (req, res) {
     const js = fs.readFileSync('./main.js', "utf-8")
     const render = ejs.render(js, {
         // tableView: '\'<a href=\"google.com\">テスト</a>\';'
-        tableView: '"' + tableContent + '"'
+        // tableView: '"' + tableContent + '"'
+        tableView:tableContent
     })
     // javascriptファイルを送信
     res.writeHead(200, { "Content-Type": "text/javascript" });
