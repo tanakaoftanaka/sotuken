@@ -2,7 +2,7 @@ const fs = require("fs"),
     ejs = require("ejs"),
     express = require("express"),
     app = express(),
-    port = process.env.PORT || 4000;
+    port = process.env.PORT || 10000;
 
 var http = require('http');
 
@@ -20,6 +20,7 @@ app.set("view engine", "ejs");
 app.get("/", function(req, res) {
     const data = ejs.render(template, {
     });
+    // テンプレートファイルを送信
     res.writeHead(200, { "Content-Type": "text/html" });
     res.write(data);
     res.end();
@@ -31,6 +32,7 @@ app.get("/main.js", function (req, res) {
         // tableView: '\'<a href=\"google.com\">テスト</a>\';'
         tableView: '"' + tableContent + '"'
     })
+    // javascriptファイルを送信
     res.writeHead(200, { "Content-Type": "text/javascript" });
     res.write(render);
     res.end();
@@ -99,7 +101,7 @@ function fileCheck(s, d) {
     }
 }
 
-server.listen(port, function() {
-    console.log("server listen...");
+server.listen(port, '0.0.0.0', function() {
+    console.log("server listen. (port:" + port + ")");
     serverInit()
 });
